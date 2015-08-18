@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Export Array Tool</title>
+	<meta charset="utf-8" />
+	<script type="text/javascript" src="./common.js"></script>
+	<script type="text/javascript">
+	window.addEventListener("load", create, false);
+
+	var drawDivTag, list;
+
+	function create () {
+		drawDivTag = document.getElementById("draw_div");
+
+		drawDivTag.innerHTML = 0;
+		list = new Array();
+
+		var col = Math.floor(stageW / particleW),
+		row = Math.floor(stageH / particleH);
+
+		for (var i = 0; i < row; i++) {
+			var rowList = new Array();
+
+			for (var j = 0; j < col; j++) {
+				rowList.push(false);
+
+				var blockObj = document.createElement("div");
+				blockObj.style.width = particleW + "px";
+				blockObj.style.height = particleH + "px";
+				blockObj.style.border = "1px black solid";
+				blockObj.style.position = "absolute";
+				blockObj.style.left = j * particleW + "px";
+				blockObj.style.top = i * particleH + "px";
+				blockObj.style.backgroundColor = "#FFFFFF";
+				blockObj.positionInList = {x : j, y : i};
+				drawDivTag.appendChild(blockObj);
+
+				blockObj.addEventListener("mouseup", onMouseUp, false)
+			}
+
+			list.push(rowList);
+		}
+
+		var bd = document.getElementById("ctrl_div");
+		bd.style.marginTop = stageH + 20 + "px";
+
+		document.getElementById("result").innerHTML = "";
+	}
+
+	function onMouseUp (e) {
+		var o = e.target,
+		x = o.positionInList.x,
+		y = o.positionInList.y;
+
+		if (list[y] != null && list[y][x] != null) {
+			var v = !list[y][x];
+
+			list[y][x] = v;
+
+			o.style.backgroundColor = v ? "#666666" : "#FFFFFF";
+		}
+	}
+
+	function exportArray () {
+		var content = "[";
+		var rd = document.getElementById("result");
+		
+		for (var i  = 0, l = list.length; i < l; i++) {
+			content += "[" + list[i].toString() + "]";
+
+			if (i != l - 1) {
+				content += ",";
+			}
+		}
+
+		content += "]";
+
+		rd.innerHTML = content;
+	}
+	</script>
+</head>
+<body>
+	<div id="draw_div"></div>
+	<div id="ctrl_div">
+		<button onclick="create()">Reset</button>
+		<button onclick="exportArray()">Export Array</button>
+		<div id="result"></div>
+	</div>
+</body>
+</html>
