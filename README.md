@@ -31,12 +31,12 @@ After downloading, you'll get a project directory. Open `index.html` in your web
 
 In `common.js`, it's allowed to modify six variables. Below are their brief introductions:
 
-`documentTitle` Document title
-`particleW` Particles' width
-`particleH` Particles' height
-`stageW` Screen width (Generally, it's a multiple of `particleW`)
-`stageH` Screen height (Generally, it's a multiple of `particleH`)
-`emitterNum` The number of particles to emit at a time
+- `documentTitle` Document title
+- `particleW` Particles' width
+- `particleH` Particles' height
+- `stageW` Screen width (Generally, it's a multiple of `particleW`)
+- `stageH` Screen height (Generally, it's a multiple of `particleH`)
+- `emitterNum` The number of particles to emit at a time
 
 Generally speaking, you don't have to modify the variables in `common.js` at all, while `list.js` requires more attention. Open `list.js` in a text editor, there is a two-dimensional array filled with `true` and `false`. Actually, it's a text map which indicates the positions of particles.
 
