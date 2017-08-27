@@ -1,4 +1,4 @@
-var particleW = particleH = 20,
-angleToRad = Math.PI / 180,
-stageW = 800,
-stageH = 480;
+var particleW = particleH = 20, // Particles' size
+stageW = 800, // Stage width
+stageH = 480, // Stage height
+emitterNum = 10; // The number of particles to emit at a time

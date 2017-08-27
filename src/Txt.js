@@ -16,7 +16,7 @@ Txt.prototype = {
 		}
 
 		ctx.save();
-		ctx.fillStyle = "black";
+		ctx.fillStyle = "#ECECEC";
 		ctx.font = "bold 20pt sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";

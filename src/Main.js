@@ -54,12 +54,16 @@ function main () {
 			var startX = scaleOffsetX(e.offsetX),
 			startY = scaleOffsetY(e.offsetY);
 
-			for (var i = 0; i < 5; i++) {
+			for (var i = 0; i < emitterNum; i++) {
 				addParticle(startX, startY);
 			}
 		},
 		false
 	);
+
+	window.onresize = function () {
+		fullScreen();
+	};
 
 	setInterval(function () {
 		loop();

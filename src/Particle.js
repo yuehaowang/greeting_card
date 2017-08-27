@@ -40,7 +40,7 @@ Particle.prototype = {
 
 		s.loopChild();
 		s.clearRemoveList();
-		s.updateShowProperites();
+		s.updateDisplay();
 		s.addChildSprite();
 	},
 
@@ -80,7 +80,7 @@ Particle.prototype = {
 		s.removeList.splice(0, s.removeList.length);
 	},
 
-	updateShowProperites : function () {
+	updateDisplay : function () {
 		var s = this;
 
 		s.x += s.stepLength * s.moveCos;

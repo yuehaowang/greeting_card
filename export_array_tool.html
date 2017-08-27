@@ -63,10 +63,19 @@
 
 	function exportArray () {
 		var content = "[";
-		var rd = document.getElementById("result");
+		var rd = document.getElementById("result"),
+			isRevert = document.getElementById("revert_checkbox").checked;
 		
 		for (var i  = 0, l = list.length; i < l; i++) {
-			content += "[" + list[i].toString() + "]";
+			var v = list[i].concat();
+
+			if (isRevert) {
+				for (var j = 0, n = v.length; j < n; j++) {
+					v[j] = !v[j];
+				}
+			}
+
+			content += "[" + v.toString() + "]";
 
 			if (i != l - 1) {
 				content += ",";
@@ -82,6 +91,7 @@
 <body>
 	<div id="draw_div"></div>
 	<div id="ctrl_div">
+		<input id="revert_checkbox" type="checkbox" /><span style="padding-right: 10px;">Revert</span>
 		<button onclick="create()">Reset</button>
 		<button onclick="exportArray()">Export Array</button>
 		<div id="result"></div>
