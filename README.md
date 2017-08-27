@@ -50,7 +50,9 @@ All the left to do is to publish your work. If you get nowhere to upload your wo
 ## Contact
 
 Twitter: @yuehaowang
+
 Weibo: @Yorhom
+
 Email: wangyuehao1999@gmail.com (Recommended)
 
 
