@@ -1,7 +1,7 @@
 # greeting_card
 ---------------
 
-*Your original, cross-platform and magnificent greeting card.*
+*Your creative, cross-platform and magnificent greeting card.*
 
 ## Intro
 
@@ -11,7 +11,12 @@ Be tired of paper greeting card? Get no originality about birthday gift? This pr
 
 ![Screenshot 2](http://images.cnblogs.com/cnblogs_com/yorhom/731449/o_greeting_card2.png)
 
-You may want to write some warm words to your best friends, parents or lover. Plain text may bore them. *Greeting Card* provides a magnificent animation to show the text brick by brick. Receivers just need to tap the screen until they make sense of what you want to express (maybe it's your gratitude or your love).
+You may want to write some warm words to your best friends, parents or lover. Plain text may bore them. *Greeting Card* provides a magnificent animation to show the text brick by brick. Receivers just need to tap the screen until they make sense of what you want to express (maybe it's your gratitude or your love). Two demo are listed below:
+
+- [Happy Birthday to My Grandma](http://wyh.wjjsoft.com/happy_birthday_to_my_grandma/)
+- [Happy Chinese Valentine's Day](http://wyh.wjjsoft.com/happy_chinese_valentines_day/)
+
+Being compatible with many popular platforms including main-stream web browsers, QQ and Wechat, your receivers can open and view your greeting card everywhere no matter they use smart phones or computers. (Non-fluency phenomenon may occur on certain devices. Because particle animations are fairly performance hungry.)
 
 
 ## Guide to Use
@@ -24,8 +29,9 @@ git clone https://github.com/yuehaowang/greeting_card.git
 
 After downloading, you'll get a project directory. Open `index.html` in your web browser which must supports HTML5 and then you'll see the default demo. Tap the demo page until there is no unemitted particle. Now, you have got your first impression of this project. To customize the text showing on the screen, two files are allowed to be modified. They are `common.js` and `list.js`. It's not necessary to modify other files unless you want to do some extensions.
 
-In `common.js`, it's allowed to modify five variables. Below are their brief introductions:
+In `common.js`, it's allowed to modify six variables. Below are their brief introductions:
 
+`documentTitle` Document title
 `particleW` Particles' width
 `particleH` Particles' height
 `stageW` Screen width (Generally, it's a multiple of `particleW`)

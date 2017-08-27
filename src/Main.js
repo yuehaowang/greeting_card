@@ -28,18 +28,25 @@ var positionList = new Array();
 })(navigator.userAgent);
 
 function main () {
+	document.title = documentTitle;
+
 	canvasTag = document.getElementById("mycanvas");
 	canvasTag.width = stageW;
 	canvasTag.height = stageH;
 	ctx = canvasTag.getContext("2d");
+
+	var eventType = mobile ? "touchend" : "mouseup";
 
 	fullScreen();
 	addStage();
 	addInstructions();
 	getParticlesPosition();
 	canvasTag.addEventListener(
-		"mouseup",
+		eventType,
 		function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+
 			if (instructionsIndex++ >= instructionsContents.length - 1) {
 				instructionsTxt.visible = false;
 			} else {
