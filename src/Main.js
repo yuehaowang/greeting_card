@@ -1,7 +1,7 @@
 window.addEventListener("load", main, false);
 
 var canvasTag, ctx;
-var canvasStyleWidth, canvasStyleHeight, marginLeft = 0, marginTop = 0;
+var canvasX, canvasY, canvasStyleWidth, canvasStyleHeight, marginLeft = 0, marginTop = 0;
 var isFirefox = true, mobile = false;
 var instructionsTxt;
 var instructionsIndex = 0, instructionsContents = [
@@ -27,6 +27,19 @@ var positionList = new Array();
 	}
 })(navigator.userAgent);
 
+window.rAF = (function(){
+  return (
+  		window.requestAnimationFrame || 
+		window.webkitRequestAnimationFrame || 
+		window.mozRequestAnimationFrame || 
+		window.oRequestAnimationFrame || 
+		window.msRequestAnimationFrame || 
+		function(callback){
+			window.setTimeout(callback, 1000 / 60);
+		}
+	);
+})();
+
 function main () {
 	document.title = documentTitle;
 
@@ -35,7 +48,7 @@ function main () {
 	canvasTag.height = stageH;
 	ctx = canvasTag.getContext("2d");
 
-	var eventType = mobile ? "touchend" : "mouseup";
+	var eventType = mobile ? "touchstart" : "mouseup";
 
 	fullScreen();
 	addStage();
@@ -58,6 +71,11 @@ function main () {
 				e.offsetY = e.layerY;
 			}
 
+			if (mobile) {
+				e.offsetX = e.touches[0].pageX - canvasX;
+				e.offsetY = e.touches[0].pageY - canvasY;
+			}
+
 			var startX = scaleOffsetX(e.offsetX),
 			startY = scaleOffsetY(e.offsetY);
 
@@ -72,9 +90,7 @@ function main () {
 		fullScreen();
 	};
 
-	setInterval(function () {
-		loop();
-	}, 1000/60);
+	loop();
 }
 
 function fullScreen () {
@@ -90,10 +106,13 @@ function fullScreen () {
 		}
 	}
 
+	canvasX = (ww - w) / 2;
+	canvasY = (wh - h) / 2;
+
 	canvasTag.style.width = w + "px";
 	canvasTag.style.height = h + "px";
-	canvasTag.style.marginLeft = (ww - w) / 2 + "px";
-	canvasTag.style.marginTop = (wh - h) / 2 + "px";
+	canvasTag.style.marginLeft = canvasX + "px";
+	canvasTag.style.marginTop = canvasY + "px";
 
 	canvasStyleWidth = w;
 	canvasStyleHeight = h;
@@ -154,4 +173,6 @@ function loop () {
 	for (var i = 0, l = showList.length; i < l; i++) {
 		showList[i].loop();
 	}
+
+	window.rAF(loop);
 }
