@@ -27,7 +27,7 @@ First, clone this project to your workspace:
 git clone https://github.com/yuehaowang/greeting_card.git
 ```
 
-After downloading, you'll get a project directory. Open `index.html` in your web browser which must supports HTML5 and then you'll see the default demo. Tap the demo page until there is no unemitted particle. Now, you have got your first impression of this project. To customize the text showing on the screen, two files are allowed to be modified. They are `common.js` and `list.js`. It's not necessary to modify other files unless you want to do some extensions.
+After downloading, you'll get a project directory. Open `index.html` in your web browser which must support HTML5 and then you'll see the default demo. Tap the demo page until there is no unemitted particle. Now, you have got your first impression of this project. To customize the text showing on the screen, two files are allowed to be modified. They are `common.js` and `list.js`. It's not necessary to modify other files unless you want to do some extensions.
 
 In `common.js`, it's allowed to modify six variables. Below are their brief introductions:
 
@@ -40,7 +40,7 @@ In `common.js`, it's allowed to modify six variables. Below are their brief intr
 
 Generally speaking, you don't have to modify the variables in `common.js` at all, while `list.js` requires more attention. Open `list.js` in a text editor, there is a two-dimensional array filled with `true` and `false`. Actually, it's a text map which indicates the positions of particles.
 
-To generate your own text map, open `export_array_tool.html` in your web browser. It's an affiliated tool to edit your own text map. Do some clicks on the gird and you'll see that the color of the block you click turns darkgray and if you click it again, it will turn white just like its initial look. One darkgray block indicates one paritcle. White area indicates there is no particle. However, if you check the 'Revert' checkbox (below the gird), the meaning of the two colors will be swapped.
+To generate your own text map, open `export_array_tool.html` in your web browser. It's an affiliated tool to edit your own text map. Do some clicks on the gird and you'll see that the color of the block you click turns darkgray and if you click it again, it will turn back to white. One darkgray block indicates there is one paritcle. White area indicates there is no particle. However, if you check the 'Revert' checkbox (below the gird), the meaning of the two colors will be swapped.
 
 After designing text map, click 'Export Array' button to generate a text map array. Then, copy and paste it to the right position in `list.js` (Make sure not to forget saving the file). Finally, refresh/open `index.html` to check the result.
 
@@ -55,11 +55,13 @@ All the left to do is to publish your work. If you get nowhere to upload your wo
 
 ## Contact
 
-Twitter: @yuehaowang
+If you come across any problems, please let me know immediately~
 
-Weibo: @Yorhom
+> Twitter: @yuehaowang
 
-Email: wangyuehao1999@gmail.com (Recommended)
+> Weibo: @Yorhom
+
+> Email: wangyuehao1999@gmail.com (Recommended)
 
 
 ## License 
