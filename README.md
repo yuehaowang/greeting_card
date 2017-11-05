@@ -13,8 +13,8 @@ Be tired of paper greeting card? Get no originality about birthday gift? This pr
 
 You may want to write some warm words to your best friends, parents or lover. Plain text may bore them. *Greeting Card* provides a magnificent animation to show the text brick by brick. Receivers just need to tap the screen until they make sense of what you want to express (maybe it's your gratitude or your love). Two demo are listed below:
 
-- [Happy Birthday to My Grandma](http://wyh.wjjsoft.com/happy_birthday_to_my_grandma/)
-- [Happy Chinese Valentine's Day](http://wyh.wjjsoft.com/happy_chinese_valentines_day/)
+- [Happy Birthday to My Grandma](http://wyh.wjjsoft.com/demo/greeting_card_showcase/0/)
+- [Happy Chinese Valentine's Day](http://wyh.wjjsoft.com/demo/greeting_card_showcase/1/)
 
 Being compatible with many popular platforms including main-stream web browsers, QQ and Wechat, your receivers can open and view your greeting card everywhere no matter they use smart phones or computers. (Non-fluency phenomenon may occur on certain devices. Because particle animations are fairly performance hungry.)
 
