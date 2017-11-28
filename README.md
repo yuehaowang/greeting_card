@@ -1,4 +1,4 @@
-# greeting_card
+# Greeting Card
 ---------------
 
 *Your creative, cross-platform and magnificent greeting card.*
