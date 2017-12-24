@@ -44,6 +44,8 @@ To generate your own text map, open `export_array_tool.html` in your web browser
 
 After designing text map, click 'Export Array' button to generate a text map array. Then, copy and paste it to the right position in `list.js` (Make sure not to forget saving the file). Finally, refresh/open `index.html` to check the result.
 
+If you want to do some modifications based on the previous work, you can import it to the editor with the help of 'Import Content' text box and 'Import Array' button (Notice, 'Revert' checkbox has no influence on the import function). Undo operation is avaliable but just for the latest 10 operations. **(Updated on 12/25/2017)**
+
 Find the design totally unsatisfied? Try clicking 'Reset' button to clear the gird and result. (It's **NOT** allowed to undo this operation, so please think over before using it.)
 
 ![Export Array Tool](http://images.cnblogs.com/cnblogs_com/yorhom/731449/o_export_array_tool.png)

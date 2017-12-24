@@ -7,19 +7,17 @@
 	<script type="text/javascript">
 	window.addEventListener("load", create, false);
 
-	var drawDivTag, list;
+	var list = [], blockList = [], historyList = [];
 
 	function create () {
-		drawDivTag = document.getElementById("draw_div");
-
-		drawDivTag.innerHTML = 0;
-		list = new Array();
+		var drawDivTag = document.getElementById("draw_div");
 
 		var col = Math.floor(stageW / particleW),
-		row = Math.floor(stageH / particleH);
+			row = Math.floor(stageH / particleH);
 
 		for (var i = 0; i < row; i++) {
-			var rowList = new Array();
+			var rowList = [];
+			var blockRowList = [];
 
 			for (var j = 0; j < col; j++) {
 				rowList.push(false);
@@ -35,10 +33,13 @@
 				blockObj.positionInList = {x : j, y : i};
 				drawDivTag.appendChild(blockObj);
 
-				blockObj.addEventListener("mouseup", onMouseUp, false)
+				blockObj.addEventListener("mouseup", onMouseUp, false);
+
+				blockRowList.push(blockObj);
 			}
 
 			list.push(rowList);
+			blockList.push(blockRowList);
 		}
 
 		var bd = document.getElementById("ctrl_div");
@@ -49,8 +50,10 @@
 
 	function onMouseUp (e) {
 		var o = e.target,
-		x = o.positionInList.x,
-		y = o.positionInList.y;
+			x = o.positionInList.x,
+			y = o.positionInList.y;
+
+		pushHistory();
 
 		if (list[y] != null && list[y][x] != null) {
 			var v = !list[y][x];
@@ -58,6 +61,61 @@
 			list[y][x] = v;
 
 			o.style.backgroundColor = v ? "#666666" : "#FFFFFF";
+		}
+	}
+
+	function undo() {
+		if (historyList.length <= 0) {
+			return;
+		}
+
+		updateArray(historyList.pop());
+	}
+
+	function pushHistory() {
+		if (historyList.length > 10) {
+			historyList.shift();
+		}
+		historyList.push(copyList(list));
+	}
+
+	function copyList() {
+		var newLs = [];
+
+		for (var i = 0, l = list.length; i < l; i++) {
+			var row = [];
+
+			for (var j = 0, n = list[i].length; j < n; j++) {
+				row.push(list[i][j]);
+			}
+
+			newLs.push(row);
+		}
+
+		return newLs;
+	}
+
+	function importArray() {
+		var importContent = document.getElementById("import_content").value;
+
+		try {
+			pushHistory();
+
+			var importArr = eval(importContent);
+			updateArray(importArr);
+		} catch(e) {
+			alert("Invalid import content.");
+		}
+	}
+
+	function updateArray(ls) {
+		for (var i = 0, l = ls.length; i < l; i++) {
+			for (var j = 0, n = ls[i].length; j < n; j++) {
+				var v = ls[i][j];
+
+				list[i][j] = v;
+				blockList[i][j].style.backgroundColor = v ? "#666666" : "#FFFFFF";
+			}
 		}
 	}
 
@@ -84,7 +142,7 @@
 
 		content += "]";
 
-		rd.innerHTML = content;
+		rd.value = content;
 	}
 	</script>
 </head>
@@ -93,8 +151,20 @@
 	<div id="ctrl_div">
 		<input id="revert_checkbox" type="checkbox" /><span style="padding-right: 10px;">Revert</span>
 		<button onclick="create()">Reset</button>
+		<button onclick="undo()">Undo</button>
 		<button onclick="exportArray()">Export Array</button>
-		<div id="result"></div>
+		<button onclick="importArray()">Import Array</button>
+
+		<div style="margin-top: 30px;">
+			<div style="display: table-cell;">
+				<b>Import Content</b><br />
+				<textarea spellcheck="false" rows="10" cols="50" id="import_content"></textarea>
+			</div>
+			<div style="display: table-cell; padding-left: 20px">
+				<b>Result</b><br />
+				<textarea spellcheck="false" rows="10" cols="50" id="result"></textarea>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
