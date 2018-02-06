@@ -11,7 +11,7 @@ Be tired of paper greeting card? Get no originality about birthday gift? This pr
 
 ![Screenshot 2](http://images.cnblogs.com/cnblogs_com/yorhom/731449/o_greeting_card2.png)
 
-You may want to write some warm words to your best friends, parents or lover. Plain text may bore them. *Greeting Card* provides a magnificent animation to show the text brick by brick. Receivers just need to tap the screen until they make sense of what you want to express (maybe it's your gratitude or your love). Two demo are listed below:
+You may want to write some warm words to your best friends, parents or lover. Plain text may bore them. *Greeting Card* provides a magnificent animation to show the message brick by brick. Receivers just need to tap the screen until they make sense of what you want to express (maybe it's your gratitude or your love). Two demo are listed below:
 
 - [Happy Birthday to My Grandma](http://wyh.wjjsoft.com/demo/greeting_card_showcase/0/)
 - [Happy Chinese Valentine's Day](http://wyh.wjjsoft.com/demo/greeting_card_showcase/1/)
