@@ -1,8 +1,8 @@
 function Txt (text) {
 	var s = this;
 
-	s.x = stageW / 2;
-	s.y = stageH / 2;
+	s.x = config.stageW / 2;
+	s.y = config.stageH / 2;
 	s.text = text || "";
 	s.visible = true;
 }

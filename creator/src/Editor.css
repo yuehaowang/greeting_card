@@ -1,0 +1,57 @@
+#editor {
+	order: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #EFEFEF;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#editor #hint {
+	width: 500px;
+	align-self: center;
+}
+
+#editor #hint h1 {
+	margin-bottom: 40px;
+}
+
+#editor #hint ul {
+	color: #666666;
+	line-height: 2;
+}
+
+#editor #grid {
+	max-width: 95%;
+	max-height: 80%;
+	overflow: auto;
+	border: 1px #333333 solid;
+}
+
+#editor #grid .row {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+#editor #grid .cell {
+	border: 1px #333333 solid;
+	flex-shrink: 0;
+}
+
+#editor #toolbar {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+#editor #toolbar button {
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+}

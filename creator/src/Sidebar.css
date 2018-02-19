@@ -1,0 +1,81 @@
+#sidebar {
+	order: 1;
+	width: 350px;
+	height: 100%;
+	overflow: auto;
+	background: #CCCCCC;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0px 30px;
+}
+
+#sidebar #menu-box {
+	margin-top:30px;
+	width: 100%;
+	height: 220px;
+}
+
+#sidebar #menu-box button {
+	width: 100%;
+	height: 50px;
+	font-size: 17px;
+	margin-bottom: 5px;
+}
+
+#sidebar #menu-box input[type="file"] {
+	visibility: hidden;
+}
+
+#sidebar #form-box {
+	padding: 0px 10px 30px 0px;
+	overflow: auto;
+	height: 100%;
+}
+
+#sidebar #form-box .form-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-bottom: 8px;
+}
+
+#sidebar #form-box .form-item label {
+	width: 210px;
+}
+
+#sidebar #form-box .form-item small {
+	font-size: 0.7em;
+}
+
+
+#sidebar #form-box .form-item input {
+	width: 100%;
+}
+
+#sidebar #form-box .form-item .list-view {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+#sidebar #form-box .form-item .list-view .list-view-item {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-bottom: 3px;
+}
+
+#sidebar #form-box .form-item .list-view .list-view-item button {
+	order: 1;
+	margin-left: 2px;
+}
+
+.color-bar {
+	order: 0;
+	width: 100%;
+	height: 20px;
+}

@@ -1,16 +1,21 @@
 window.addEventListener("load", main, false);
 
+var config = null;
+
 var canvasTag, ctx;
+
 var canvasX, canvasY, canvasStyleWidth, canvasStyleHeight, marginLeft = 0, marginTop = 0;
+
+var particleW, particleH;
+
 var isFirefox = true, mobile = false;
-var instructionsTxt;
-var instructionsIndex = 0, instructionsContents = [
-	"Tap to open my greeting card~",
-	"Well, continue~",
-	"Don't stop tapping until you know my meaning ^_^"
-];
+
+var prefaceTxt;
+var prefaceIndex = 0;
+
 var showList = new Array();
 var positionList = new Array();
+
 
 (function (n) {
 	isFirefox = (n.toLowerCase().indexOf('firefox') >= 0);
@@ -41,11 +46,65 @@ window.rAF = (function(){
 })();
 
 function main () {
-	document.title = documentTitle;
+	var loadList = [
+		"./src/Sprite.js",
+		"./src/Particle.js",
+		"./src/Stage.js",
+		"./src/Txt.js"
+	];
+
+	var startLoad = function (configPath) {
+		if (configPath != null) {
+			loadList.splice(0, 0, configPath);
+		}
+
+		for (var i = 0, l = loadList.length; i < l; i++) {
+			var path = loadList[i];
+
+			var script = document.createElement("script");
+			script.async = false;
+			script.type = "text/javascript";
+			script.src = path;
+			script.__index = i;
+			script.onload = function () {
+				if (this.__index === l - 1) {
+					config = normalizeConfig(config);
+
+					particleW = config.stageW / config.col;
+					particleH = config.stageH / config.row;
+
+					init();
+				}
+			}
+			document.querySelector("head").appendChild(script);
+		}
+	};
+
+	var getQueryStringByName = function (name) {
+		var result = window.location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
+
+		if(result === null || result.length < 1){
+			return null;
+		}
+
+		return result[1];
+	};
+
+	var configFileQueryStr = getQueryStringByName("config_file");
+
+	if (configFileQueryStr === null) {
+		startLoad("./config.js");
+	} else {
+		startLoad(configFileQueryStr);
+	}
+}
+
+function init () {
+	document.title = config.documentTitle;
 
 	canvasTag = document.getElementById("mycanvas");
-	canvasTag.width = stageW;
-	canvasTag.height = stageH;
+	canvasTag.width = config.stageW;
+	canvasTag.height = config.stageH;
 	ctx = canvasTag.getContext("2d");
 
 	var eventType = mobile ? "touchstart" : "mouseup";
@@ -60,10 +119,10 @@ function main () {
 			e.preventDefault();
 			e.stopPropagation();
 
-			if (instructionsIndex++ >= instructionsContents.length - 1) {
-				instructionsTxt.visible = false;
+			if (prefaceIndex++ >= config.preface.length - 1) {
+				prefaceTxt.visible = false;
 			} else {
-				instructionsTxt.text = instructionsContents[instructionsIndex];
+				prefaceTxt.text = config.preface[prefaceIndex];
 			}
 
 			if (e.offsetX == null && e.layerX != null) {
@@ -79,7 +138,7 @@ function main () {
 			var startX = scaleOffsetX(e.offsetX),
 			startY = scaleOffsetY(e.offsetY);
 
-			for (var i = 0; i < emitterNum; i++) {
+			for (var i = 0; i < config.emitterNum; i++) {
 				addParticle(startX, startY);
 			}
 		},
@@ -94,15 +153,15 @@ function main () {
 }
 
 function fullScreen () {
-	var w = stageW, h = stageH, ww = window.innerWidth, wh = window.innerHeight;
+	var w = config.stageW, h = config.stageH, ww = window.innerWidth, wh = window.innerHeight;
 
 	if (mobile) {
-		if (ww / wh > stageW / stageH) {
+		if (ww / wh > config.stageW / config.stageH) {
 			h = wh;
-			w = stageW * wh / stageH;
+			w = config.stageW * wh / config.stageH;
 		} else {
 			w = ww;
-			h = stageH * ww / stageW;
+			h = config.stageH * ww / config.stageW;
 		}
 	}
 
@@ -129,13 +188,25 @@ function addStage () {
 }
 
 function addInstructions () {
-	instructionsTxt = new Txt(instructionsContents[instructionsIndex]);
-	showList.push(instructionsTxt);
+	var text;
+
+	if (config.preface.length <= 0) {
+		text = "";
+	} else {
+		text = config.preface[prefaceIndex];
+	}
+
+	prefaceTxt = new Txt(text);
+	showList.push(prefaceTxt);
 }
 
 function getParticlesPosition () {
-	for (var i = 0, l = list.length; i < l; i++) {
-		var item = list[i];
+	if (!config.matrix) {
+		return;
+	}
+
+	for (var i = 0, l = config.matrix.length; i < l; i++) {
+		var item = config.matrix[i];
 
 		for (var j = 0, n = item.length; j < n; j++) {
 			if (item[j]) {
@@ -160,11 +231,11 @@ function addParticle (startX, startY) {
 }
 
 function scaleOffsetX (v) {
-	return (v - marginLeft) * stageW / canvasStyleWidth;
+	return (v - marginLeft) * config.stageW / canvasStyleWidth;
 }
 
 function scaleOffsetY (v) {
-	return (v - marginTop) * stageH / canvasStyleHeight;
+	return (v - marginTop) * config.stageH / canvasStyleHeight;
 }
 
 function loop () {

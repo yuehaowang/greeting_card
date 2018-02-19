@@ -16,7 +16,7 @@ You may want to write some warm words to your best friends, parents or lover. Pl
 - [Happy Birthday to My Grandma](http://yuehaolab.com/demo/greeting_card_showcase/0/)
 - [Happy Chinese Valentine's Day](http://yuehaolab.com/demo/greeting_card_showcase/1/)
 
-Being compatible with many popular platforms including main-stream web browsers, QQ and Wechat, your receivers can open and view your greeting card everywhere no matter they use smart phones or computers. (Non-fluency phenomenon may occur on certain devices. Because particle animations are fairly performance hungry.)
+Being compatible with many popular platforms including main-stream web browsers, QQ and Wechat, your receivers can open and view your greeting card everywhere regardless they are using smart phones or computers. (Non-fluency phenomenon may occur on certain devices, because particle animations are fairly performance hungry.)
 
 
 ## Guide to Use

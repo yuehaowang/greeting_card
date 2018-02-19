@@ -1,0 +1,265 @@
+import React from "react";
+import "./Editor.css";
+
+
+class Hint extends React.Component {
+	render() {
+		return (
+			<div id="editor">
+				<div id="hint">
+					<h1>Welcome to <i>Greeting Card Creator</i></h1>
+					<div>
+						<p>Reading the instructions below may help you get your own greeting card:</p>
+						<ul>
+							<li>Click the 'Create' button to new a config file.</li>
+							<li>Click the 'Open' button to open an existed config file.</li>
+							<li>After finishing your creation, click the 'Export' button to generate the corresponding config file.</li>
+						</ul>
+					</div>
+					<div>
+						<p>Notes:</p>
+						<ul>
+							<li>The moment you click the 'Create' button or open an existed config file, settings on <i>stageW</i>, <i>stageH</i>, <i>col</i> and <i>row</i> will be locked (i.e. you cannot modify them anymore).</li>
+							<li>Too many cells on the grid will bring about non-fluency phenomenon.</li>
+						</ul>
+					</div>
+					<p>&copy; 2018 Yuehao Wang. <a href={"mailto:wangyuehao1999@gmail.com"}>Comments</a> are welcomed.</p>
+				</div>
+			</div>
+		);
+	}
+}
+
+
+class Cell extends React.Component {
+	render() {
+		return (
+			<div className="cell"
+				style={{
+					width: this.props.width,
+					height: this.props.height,
+					background: (this.props.checked ? "#666666" : "#F1F1F1")
+				}}
+
+				onClick = {e => {
+					this.props.onClick(this.props.x, this.props.y);
+				}}
+			/>
+		);
+	}
+}
+
+
+class Toolbar extends React.Component {
+	render() {
+		return (
+			<div id="toolbar">
+				<button onClick={this.props.onBtnRedoClicked}>Redo</button>
+				<button onClick={this.props.onBtnResetClicked}>Reset</button>
+				<button onClick={this.props.onBtnReverseClicked}>Reverse</button>
+			</div>
+		);
+	}
+}
+
+
+class Grid extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.matrixHistory = [];
+
+		this.state = {
+			matrix: Grid.getMatrix(this.props)
+		};
+	}
+
+	static getMatrix(props) {
+		return props.matrix ? props.matrix : Grid.getInitMatrix(props.row, props.col);
+	}
+
+	static getInitMatrix(row, col) {
+		return (Array(row).fill(0)).map(() => Array(col).fill(false));
+	}
+
+	static cloneMatrix(o) {
+		return o.map(row => {
+			return row.map(item => item);
+		});
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.matrixHistory.splice(0, this.matrixHistory.length);
+
+		this.setState({
+			matrix: Grid.getMatrix(nextProps)
+		});
+	}
+
+	getMatrixConfig() {
+		return Grid.cloneMatrix(this.state.matrix);
+	}
+
+	onCellClicked(x, y) {
+		this.pushMatrixHistory();
+
+		this.setState((prev, props) => {
+			prev.matrix[y][x] = !prev.matrix[y][x];
+
+			return {
+				matrix: prev.matrix
+			};
+		});
+	}
+
+	redo() {
+		if (this.matrixHistory.length <= 0) {
+			return;
+		}
+
+		this.setState({
+			matrix: this.matrixHistory.pop()
+		});
+	}
+
+	reverse() {
+		this.pushMatrixHistory();
+
+		this.setState((prev, props) => {
+			prev.matrix.forEach((row, y) => row.forEach((val, x) => row[x] = !val));
+
+			return {
+				matrix: prev.matrix
+			};
+		});
+	}
+
+	reset() {
+		this.pushMatrixHistory();
+
+		this.setState({
+			matrix: Grid.getInitMatrix(this.props.row, this.props.col)
+		});
+	}
+
+	pushMatrixHistory() {
+		this.matrixHistory.push(Grid.cloneMatrix(this.state.matrix));
+
+		if (this.matrixHistory.length > 10) {
+			this.matrixHistory.shift();
+		}
+	}
+
+	render() {
+		return (
+			<div id="grid">
+				{this.state.matrix.map((row, y) =>{
+					return (
+						<div key={"row_" + y} className="row">
+							{row.map((val, x) => {
+								return (
+									<Cell
+										checked={val}
+										x={x} y={y}
+										key={"cell_(" + x + ", " + y + ")"}
+										width={this.props.cellW}
+										height={this.props.cellH}
+										onClick = {this.onCellClicked.bind(this)}
+									/>
+								);
+							})}
+						</div>
+					);
+				})}
+			</div>
+		);
+	}
+}
+
+
+class Editor extends React.Component {
+	constructor() {
+		super();
+
+		this.state = {
+			gridCreated: false
+		};
+
+		this.gridInfo = {
+			cellW: 0,
+			cellH: 0,
+			col: 0,
+			row: 0
+		};
+
+		this.gridElem = null;
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		if (nextState.gridCreated === this.state.gridCreated) {
+			return false;
+		}
+
+		return true;
+	}
+
+	createGrid(stageW, stageH, col, row, matrix) {
+		col = Math.round(col);
+		row = Math.round(row);
+
+		this.gridInfo = {
+			cellW: stageW / (col > 0 ? col : 1),
+			cellH: stageH / (row > 0 ? row : 1),
+			col: col,
+			row: row,
+			matrix: matrix
+		};
+
+		if (this.state.gridCreated) {
+			this.forceUpdate();
+		} else {
+			this.setState({
+				gridCreated: true
+			});
+		}
+	}
+
+	render() {
+		let widget;
+
+		if (!this.state.gridCreated) {
+			widget = <Hint />;
+		} else {
+			widget = <Grid ref={ele => this.gridElem = ele} matrix={this.gridInfo.matrix} col={this.gridInfo.col} row={this.gridInfo.row} cellW={this.gridInfo.cellW} cellH={this.gridInfo.cellH} />;
+		}
+
+		return (
+			<div id="editor">
+				{widget}
+
+				{this.state.gridCreated ? (
+					<Toolbar
+						onBtnRedoClicked={() => {
+							if (this.gridElem != null) {
+								this.gridElem.redo();
+							}
+						}}
+						onBtnResetClicked={() => {
+							if (this.gridElem != null) {
+								this.gridElem.reset();
+							}
+						}}
+						onBtnReverseClicked={() => {
+							if (this.gridElem != null) {
+								this.gridElem.reverse();
+							}
+						}}
+					/> 
+				) : null}
+			</div>
+		);
+	}
+}
+
+
+export default Editor;

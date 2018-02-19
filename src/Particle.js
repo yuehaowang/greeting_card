@@ -15,24 +15,8 @@ function Particle (startX, startY, endX, endY) {
 	s.moveSin = (endY - startY) / s.displacement;
 	s.childList = new Array();
 	s.removeList = new Array();
-	s.color = Particle.COLOR_LIST[Math.round(Math.random() * (Particle.COLOR_LIST.length - 1))];
+	s.color = config.colorList[Math.round(Math.random() * (config.colorList.length - 1))];
 }
-
-Particle.COLOR_LIST = [
-	"#990000",
-	"#FF0000",
-	"#CC3300",
-	"#CC6600",
-	"#CC0033",
-	"#FFFF00",
-	"#33FF00",
-	"#33CC00",
-	"#0066FF",
-	"#00FF99",
-	"#330099",
-	"#990033",
-	"#000099"
-];
 
 Particle.prototype = {
 	loop : function () {
@@ -56,7 +40,7 @@ Particle.prototype = {
 
 			o.loop();
 
-			if (o.mode == Sprite.MODE_DISAPPEAR) {
+			if (o.mode === Sprite.MODE_DISAPPEAR) {
 				s.removeList.push(o);
 			}
 		}
@@ -69,7 +53,7 @@ Particle.prototype = {
 			var toRemoveObj = s.removeList[j];
 
 			for (var k = 0, n = s.childList.length; k < n; k++) {
-				if (s.childList[k].index == toRemoveObj.index) {
+				if (s.childList[k].index === toRemoveObj.index) {
 					s.childList.splice(k, 1);
 
 					break;
