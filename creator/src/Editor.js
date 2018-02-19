@@ -54,7 +54,7 @@ class Toolbar extends React.Component {
 	render() {
 		return (
 			<div id="toolbar">
-				<button onClick={this.props.onBtnRedoClicked}>Redo</button>
+				<button onClick={this.props.onBtnUndoClicked}>Undo</button>
 				<button onClick={this.props.onBtnResetClicked}>Reset</button>
 				<button onClick={this.props.onBtnReverseClicked}>Reverse</button>
 			</div>
@@ -112,7 +112,7 @@ class Grid extends React.Component {
 		});
 	}
 
-	redo() {
+	undo() {
 		if (this.matrixHistory.length <= 0) {
 			return;
 		}
@@ -239,9 +239,9 @@ class Editor extends React.Component {
 
 				{this.state.gridCreated ? (
 					<Toolbar
-						onBtnRedoClicked={() => {
+						onBtnUndoClicked={() => {
 							if (this.gridElem != null) {
-								this.gridElem.redo();
+								this.gridElem.undo();
 							}
 						}}
 						onBtnResetClicked={() => {
