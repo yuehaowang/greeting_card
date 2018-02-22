@@ -42,13 +42,12 @@
 }
 
 #sidebar #form-box .form-item label {
-	width: 210px;
+	width: 220px;
 }
 
 #sidebar #form-box .form-item small {
 	font-size: 0.7em;
 }
-
 
 #sidebar #form-box .form-item input {
 	width: 100%;
