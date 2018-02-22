@@ -3,20 +3,21 @@ import "./Sidebar.css";
 
 
 const defaultConfig = {
-	documentTitle : "Greeting Card",
-	stageW : 800,
-	stageH : 480,
-	col : 40,
-	row : 24,
-	emitterNum : 10,
+	documentTitle: "Greeting Card",
+	stageW: 800,
+	stageH: 480,
+	col: 40,
+	row: 24,
+	emitterNum: 10,
 
-	preface : [
+	preface: [
 		"Tap to open my greeting card~",
 		"Well, continue~",
 		"Don't stop tapping until you know my meaning ^_^"
 	],
+	prefaceFontSize: 20,
 
-	colorList : [
+	colorList: [
 		"#990000",
 		"#FF0000",
 		"#CC3300",
@@ -39,38 +40,18 @@ function normalizeConfig (_config) {
 		_config = {};
 	}
 
-	if (typeof _config.documentTitle === "undefined") {
-		_config.documentTitle = defaultConfig.documentTitle;
-	}
+	for (var k in defaultConfig) {
+		if (typeof _config[k] === "undefined") {
+			let t;
 
-	if (typeof _config.stageW === "undefined") {
-		_config.stageW = defaultConfig.stageW;
-	}
-	if (typeof _config.stageH === "undefined") {
-		_config.stageH = defaultConfig.stageH;
-	}
+			if (typeof defaultConfig[k] === "object") {
+				t = JSON.parse(JSON.stringify(defaultConfig[k]));
+			} else {
+				t = defaultConfig[k];
+			}
 
-	if (typeof _config.col === "undefined") {
-		_config.col = defaultConfig.col;
-	}
-	if (typeof _config.row === "undefined") {
-		_config.row = defaultConfig.row;
-	}
-
-	if (typeof _config.emitterNum === "undefined") {
-		_config.emitterNum = defaultConfig.emitterNum;
-	}
-
-	if (typeof _config.preface === "undefined") {
-		_config.preface = defaultConfig.preface;
-	}
-
-	if (typeof _config.colorList === "undefined") {
-		_config.colorList = defaultConfig.colorList;
-	}
-
-	if (typeof _config.matrix === "undefined") {
-		_config.matrix = defaultConfig.matrix;
+			_config[k] = t;
+		}
 	}
 
 	return _config;

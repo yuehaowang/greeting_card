@@ -11,6 +11,7 @@ var config_default = {
 		"Well, continue~",
 		"Don't stop tapping until you know my meaning ^_^"
 	],
+	prefaceFontSize: 20,
 
 	colorList : [
 		"#990000",
@@ -26,7 +27,7 @@ var config_default = {
 		"#770099"
 	],
 
-	matrix: null
+	matrix : null
 };
 
 
@@ -35,38 +36,10 @@ function normalizeConfig (_config) {
 		_config = {};
 	}
 
-	if (typeof _config.documentTitle === "undefined") {
-		_config.documentTitle = config_default.documentTitle;
-	}
-
-	if (typeof _config.stageW === "undefined") {
-		_config.stageW = config_default.stageW;
-	}
-	if (typeof _config.stageH === "undefined") {
-		_config.stageH = config_default.stageH;
-	}
-
-	if (typeof _config.col === "undefined") {
-		_config.col = config_default.col;
-	}
-	if (typeof _config.row === "undefined") {
-		_config.row = config_default.row;
-	}
-
-	if (typeof _config.emitterNum === "undefined") {
-		_config.emitterNum = config_default.emitterNum;
-	}
-
-	if (typeof _config.preface === "undefined") {
-		_config.preface = config_default.preface;
-	}
-
-	if (typeof _config.colorList === "undefined") {
-		_config.colorList = config_default.colorList;
-	}
-
-	if (typeof _config.matrix === "undefined") {
-		_config.matrix = config_default.matrix;
+	for (var k in config_default) {
+		if (typeof _config[k] === "undefined") {
+			_config[k] = config_default[k];
+		}
 	}
 
 	return _config;

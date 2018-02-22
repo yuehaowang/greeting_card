@@ -18,6 +18,7 @@ var config = {
 		"Well, continue~",
 		"Don't stop tapping until you know my meaning ^_^"
 	],
+	prefaceFontSize : 20,
 
 	/** particles' colors */
 	colorList : [

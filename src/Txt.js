@@ -7,7 +7,7 @@ function Txt (text) {
 }
 
 Txt.prototype = {
-	loop : function() {
+	loop : function () {
 		var s = this;
 
 		if (!s.visible) {
@@ -16,7 +16,7 @@ Txt.prototype = {
 
 		ctx.save();
 		ctx.fillStyle = "#ECECEC";
-		ctx.font = "bold 20pt sans-serif";
+		ctx.font = "bold " + config.prefaceFontSize + "pt sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "top";
 
@@ -32,9 +32,9 @@ Txt.prototype = {
 		ctx.restore();
 	},
 
-	getTextLines() {
+	getTextLines () {
 		var tokens = this.text.match(/(\S+)(\s*)/gi);
-		var maxWidth = config.stageW - 40;
+		var maxWidth = Math.floor(config.stageW * 0.9);
 		var temp = "", lines = new Array();
 
 		for (var j = 0, l = tokens.length; j < l; j++) {
