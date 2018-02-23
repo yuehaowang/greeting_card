@@ -9,18 +9,18 @@ class Hint extends React.Component {
 				<div id="hint">
 					<h1>Welcome to <i>Greeting Card Creator</i></h1>
 					<div>
-						<p>Reading the instructions below may help you get your own greeting card:</p>
+						<p>To make your own greeting cards, follow this:</p>
 						<ul>
-							<li>Click the 'Create' button to new a config file.</li>
-							<li>Click the 'Open' button to open an existed config file.</li>
-							<li>After finishing your creation, click the 'Export' button to generate the corresponding config file.</li>
+							<li>Click the 'Create' button to create a config file.</li>
+							<li>Click the 'Open' button to open an existing config file.</li>
+							<li>Click the 'Export' button to get the content of the current config file.</li>
 						</ul>
 					</div>
 					<div>
 						<p>Notes:</p>
 						<ul>
-							<li>The moment you click the 'Create' button or open an existed config file, settings on <i>stageW</i>, <i>stageH</i>, <i>col</i> and <i>row</i> will be locked (i.e. you cannot modify them anymore).</li>
-							<li>Too many cells on the grid will bring about non-fluency phenomenon.</li>
+							<li>The moment you click the 'Create' button or open an existing config file, settings on <i>stageW</i>, <i>stageH</i>, <i>col</i> and <i>row</i> will be locked (i.e. you cannot modify them anymore).</li>
+							<li>A large grid containing too many cells may significantly slow down the rumtime performance.</li>
 						</ul>
 					</div>
 					<p>&copy; 2018 Yuehao Wang. <a href={"mailto:wangyuehao1999@gmail.com"}>Comments</a> are welcomed.</p>

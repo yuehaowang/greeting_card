@@ -17,7 +17,7 @@ You may want to write some warm words to your best friends, parents or lover. Pl
 - [Happy Birthday to My Grandma](http://yuehaolab.com/demo/greeting_card/?config_file=config2.js)
 - [Happy Chinese Valentine's Day](http://yuehaolab.com/demo/greeting_card/)
 
-Being compatible with many popular platforms including main-stream web browsers, QQ and Wechat, your receivers can open and view your greeting card everywhere regardless they are using smart phones or computers. (Non-fluency phenomenon may occur on certain devices, because particle animations are fairly performance hungry.)
+Being compatible with many popular platforms including main-stream web browsers, QQ and Wechat, your receivers can open and view your greeting card everywhere regardless they are using smart phones or computers. (Lag phenomenon may occur on certain devices, because particle animations are fairly performance hungry.)
 
 
 ## Quick Start
@@ -44,7 +44,7 @@ Open the `index.html` in your web browser which must support HTML5 and then you'
 
 The `config.js` file is the default entrance to the configuration of *Greeting Card*. If you are familiar with *JavaScript*, you can edit it in a plain-text editor to customize your work. However, it is NOT the recommended way to modify the `config.js` directly because of its poor readability. The best way to get your own greeting card is to generate a configuration file via *Greeting Card Creator* (See Step2).
 
-If it is in your need to create more than one configuration file, you don't have to download and unzip again. Just new a `.js` file with the different name from `config.js` (e.g. `config2.js`, `myconfig.js`) in the `greeting_card/` directory. To apply the new configuration file to the `index.html`, you need to add a query string to the url in your browser for specifying which configuration file should be used. For example, if you want to apply the `config2.js` file to your greeting card, change the url from `path/to/greeting_card/index.html` to `path/to/greeting_card/index.html?config_file=config2.js` in your browser.
+If it is in your need to create more than one configuration file, you don't have to download and unzip the compressed package again. Just new a `.js` file with the different name from `config.js` (e.g. `config2.js`, `myconfig.js`) in the `greeting_card/` directory. To apply the new configuration file to the `index.html`, you need to add a query string to the url in your browser for specifying which configuration file should be used. For example, if you want to apply the `config2.js` file to your greeting card, change the url from `path/to/greeting_card/index.html` to `path/to/greeting_card/index.html?config_file=config2.js` in your browser.
 
 ### Step2: Customization via *Greeting Card Creator*
 
@@ -55,7 +55,7 @@ This tool is quite easy and convenient to use since you just need to fill out a 
 After loading the creator in your web browser, you will get a welcome page. Now there are two choices laid in front of you:
 
 1. Click the 'Create' button to create a grid using the settings from the sidebar's form. Before this operation, you may need to change some settings on the sidebar. Also note, after your click at the 'Create' button, settings on `stageW`, `stageH`, `row` and `col` will be locked (i.e. you CANNOT modify them anymore).
-2. Open an existed configuration file suffixed with `.js` (e.g. `config.js`), if any.
+2. Open an existing configuration file suffixed with `.js` (e.g. `config.js`), if any.
 
 No matter which one you choose, you will get a grid on the left side. Do some clicks on the grid and you'll see that the color of the block which you click at turns darkgray. If you click it again, it will turn back to lightgray. One darkgray block indicates there is one paritcle. Lightgray area indicates there is no particle. The 'Undo', 'Reverse' and 'Reset' button will come to your assitance if you want to cancel the previous opertions, reverse area's color and discard the creation, respectively.
 
