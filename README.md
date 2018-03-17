@@ -82,11 +82,11 @@ First, clone this project:
 git clone https://github.com/yuehaowang/greeting_card.git
 ```
 
-Files in `src/` implement the web user interface of *Greeting Card*. Therefore, if you want to enhance the user interface, you need to review the code in `src/` so that you can add your own code in a right place.
+Files in `src/` implement the web user interface of *Greeting Card*. Therefore, if you want to enhance the user interface, you need to review the code in `src/` so that you can add your own code at a right place.
 
 The `config.js` and `config_default.js` are two files for customization (the latter one is used for providing default value for those options where the former one doesn't give a value). Hence if you want to add some options, you need to modify both `config.js` file and `config_default.js` file. Correspondingly, you need to modify a constant named `defaultConfig` in `creator/src/Sidebar.js` to make the creator adapt to your modification.
 
-*Greeting Card Creator* is powered by [React](https://reactjs.org) and built with [create-react-app](https://www.npmjs.com/package/create-react-app) and [NodeJs](http://nodejs.org/). You may learn about all of them before you try to edit the source code. Simply put, to run the creator locally, type this command:
+*Greeting Card Creator* is powered by [React](https://reactjs.org) and built with [create-react-app](https://www.npmjs.com/package/create-react-app) and [NodeJs](http://nodejs.org/). You probably need to learn about all of them before you try to edit the source code. Simply put, to run the creator locally, type this command:
 
 ```shell
 npm start
