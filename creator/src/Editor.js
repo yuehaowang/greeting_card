@@ -56,7 +56,7 @@ class Toolbar extends React.Component {
 			<div id="toolbar">
 				<button onClick={this.props.onBtnUndoClicked}>Undo</button>
 				<button onClick={this.props.onBtnResetClicked}>Reset</button>
-				<button onClick={this.props.onBtnReverseClicked}>Reverse</button>
+				<button onClick={this.props.onBtnInverseClicked}>Inverse</button>
 			</div>
 		);
 	}
@@ -122,7 +122,7 @@ class Grid extends React.Component {
 		});
 	}
 
-	reverse() {
+	inverse() {
 		this.pushMatrixHistory();
 
 		this.setState((prev, props) => {
@@ -249,9 +249,9 @@ class Editor extends React.Component {
 								this.gridElem.reset();
 							}
 						}}
-						onBtnReverseClicked={() => {
+						onBtnInverseClicked={() => {
 							if (this.gridElem != null) {
-								this.gridElem.reverse();
+								this.gridElem.inverse();
 							}
 						}}
 					/> 

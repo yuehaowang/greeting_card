@@ -57,9 +57,9 @@ After loading the creator in your web browser, you will get a welcome page. Now 
 1. Click the 'Create' button to create a grid using the settings from the sidebar's form. Before this operation, you may need to change some settings on the sidebar. Also note, after your click at the 'Create' button, settings on `stageW`, `stageH`, `row` and `col` will be locked (i.e. you CANNOT modify them anymore).
 2. Open an existing configuration file suffixed with `.js` (e.g. `config.js`), if any.
 
-No matter which one you choose, you will get a grid on the left side. Do some clicks on the grid and you'll see that the color of the block which you click at turns darkgray. If you click it again, it will turn back to lightgray. One darkgray block indicates there is one paritcle. Lightgray area indicates there is no particle. The 'Undo', 'Reverse' and 'Reset' button will come to your assitance if you want to cancel the previous opertions, reverse area's color and discard the creation, respectively.
+No matter which one you choose, you will get a grid on the left side. Do some clicks on the grid and you'll see that the color of the block which you click at turns darkgray. If you click it again, it will turn back to lightgray. One darkgray block indicates there is one paritcle. Lightgray area indicates there is no particle. The 'Undo', 'Inverse' and 'Reset' button will come to your assitance if you want to cancel the previous opertions, inverse area's color and discard the creation, respectively.
 
-![Greeting Card Creator](http://images.cnblogs.com/cnblogs_com/yorhom/731449/o_greeting_card_creator.png)
+![Greeting Card Creator](http://images.cnblogs.com/cnblogs_com/yorhom/731449/o_greeting_card_creator1.png)
 
 *(Basic user interface of *Greeting Card Creator*)*
 
