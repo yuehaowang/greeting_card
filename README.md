@@ -8,9 +8,9 @@
 
 Be tired of paper greeting card? Get no originality about birthday gift? This project may come to your assistance. To make sure you'll immediately fall in love with it, please enjoy two screenshots below.
 
-![Screenshot 1](http://images.cnblogs.com/cnblogs_com/yorhom/731449/o_greeting_card0.png)
+![Screenshot 1](screenshots/demo0.png)
 
-![Screenshot 2](http://images.cnblogs.com/cnblogs_com/yorhom/731449/o_greeting_card2.png)
+![Screenshot 2](screenshots/demo1.png)
 
 You may want to write some warm words to your best friends, parents or lover. Plain text may bore them. *Greeting Card* provides a magnificent animation to show the message brick by brick. Receivers just need to tap the screen until they make sense of what you want to express (maybe it's your gratitude or your love). Two demo are listed below:
 
@@ -59,7 +59,7 @@ After loading the creator in your web browser, you will get a welcome page. Now 
 
 No matter which one you choose, you will get a grid on the left side. Do some clicks on the grid and you'll see that the color of the block which you click at turns darkgray. If you click it again, it will turn back to lightgray. One darkgray block indicates there is one paritcle. Lightgray area indicates there is no particle. The 'Undo', 'Inverse' and 'Reset' button will come to your assitance if you want to cancel the previous opertions, inverse area's color and discard the creation, respectively.
 
-![Greeting Card Creator](http://images.cnblogs.com/cnblogs_com/yorhom/731449/o_greeting_card_creator1.png)
+![Greeting Card Creator](screenshots/creator.png)
 
 *(Basic user interface of *Greeting Card Creator*)*
 
