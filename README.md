@@ -67,7 +67,9 @@ When you finish your creation, you can click the 'Export' button to get the cont
 
 ### Step3: Publish Your Works
 
-- If you have your own server, you can publish your greeting cards like publishing other webpages. 
+- If you have your own server, you can publish your greeting cards as static webpages.
+
+- [Github Pages](https://pages.github.com/) is recommended for publishing your greeting cards.
 
 - Nevertheless, if you get nowhere to upload your works but you really need to share them, don't hesitate and drop me an email with your configuration files. I will send back the urls which direct to the works to you. I'm willing to help you out. **Note: I am NOT sure that I will upload your works in time. So please send to me as early as possible.**
 
